@@ -1,27 +1,27 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import type { backendInterface } from "../backend";
 import { createActorWithConfig } from "../config";
 
 const ACTOR_QUERY_KEY = "actor";
-
 export function useActor() {
   const queryClient = useQueryClient();
-  const invalidated = useRef(false);
-
   const actorQuery = useQuery<backendInterface>({
     queryKey: [ACTOR_QUERY_KEY],
     queryFn: async () => {
       return await createActorWithConfig();
     },
     staleTime: Number.POSITIVE_INFINITY,
-    gcTime: Number.POSITIVE_INFINITY,
+    enabled: true,
   });
 
+  // When the actor loads, invalidate and refetch all dependent queries
   useEffect(() => {
-    if (actorQuery.data && !invalidated.current) {
-      invalidated.current = true;
+    if (actorQuery.data) {
       queryClient.invalidateQueries({
+        predicate: (query) => !query.queryKey.includes(ACTOR_QUERY_KEY),
+      });
+      queryClient.refetchQueries({
         predicate: (query) => !query.queryKey.includes(ACTOR_QUERY_KEY),
       });
     }

@@ -46,10 +46,35 @@ actor {
     };
   };
 
-  // State
+  // --- Stable storage for upgrades ---
+  stable var stableNextProductId : Nat = 1;
+  stable var stableProducts : [(Nat, Product)] = [];
+  stable var stableSiteContent : [(Text, Text)] = [];
+
+  // In-memory state (populated from stable on upgrade)
   var nextProductId : Nat = 1;
   let products = Map.empty<Nat, Product>();
   let siteContent = Map.empty<Text, Text>();
+
+  // Save state before upgrade
+  system func preupgrade() {
+    stableNextProductId := nextProductId;
+    stableProducts := products.entries().toArray();
+    stableSiteContent := siteContent.entries().toArray();
+  };
+
+  // Restore state after upgrade
+  system func postupgrade() {
+    nextProductId := stableNextProductId;
+    for ((k, v) in stableProducts.vals()) {
+      products.add(k, v);
+    };
+    for ((k, v) in stableSiteContent.vals()) {
+      siteContent.add(k, v);
+    };
+    stableProducts := [];
+    stableSiteContent := [];
+  };
 
   // Product Management
   public shared func createProduct(newProduct : ProductInput) : async Product {

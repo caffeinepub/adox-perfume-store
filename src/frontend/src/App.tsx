@@ -1,5 +1,4 @@
 import { Toaster } from "@/components/ui/sonner";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   RouterProvider,
@@ -11,21 +10,12 @@ import AdminDashboardPage from "./pages/AdminDashboardPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import HomePage from "./pages/HomePage";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 30,
-      retry: 1,
-    },
-  },
-});
-
 const rootRoute = createRootRoute({
   component: () => (
-    <QueryClientProvider client={queryClient}>
+    <>
       <Outlet />
       <Toaster />
-    </QueryClientProvider>
+    </>
   ),
 });
 
