@@ -6,50 +6,50 @@
 
 @layer base {
   :root {
-    /* Deep navy/midnight blue + gold luxury theme */
-    --background: 0.13 0.025 260;
-    --foreground: 0.95 0.012 88;
-    --card: 0.17 0.03 260;
-    --card-foreground: 0.95 0.012 88;
-    --popover: 0.15 0.028 260;
-    --popover-foreground: 0.95 0.012 88;
+    /* Luxury black/gold/white dark theme */
+    --background: 0.08 0 0;
+    --foreground: 0.94 0.018 88;
+    --card: 0.12 0 0;
+    --card-foreground: 0.94 0.018 88;
+    --popover: 0.11 0 0;
+    --popover-foreground: 0.94 0.018 88;
 
-    /* Warm gold primary */
-    --primary: 0.74 0.13 78;
-    --primary-foreground: 0.1 0.015 260;
+    /* Gold primary */
+    --primary: 0.72 0.11 82;
+    --primary-foreground: 0.08 0 0;
 
-    --secondary: 0.2 0.035 260;
-    --secondary-foreground: 0.95 0.012 88;
+    --secondary: 0.16 0 0;
+    --secondary-foreground: 0.94 0.018 88;
 
-    --muted: 0.22 0.03 260;
-    --muted-foreground: 0.6 0.02 260;
+    --muted: 0.18 0 0;
+    --muted-foreground: 0.58 0.01 88;
 
-    --accent: 0.74 0.13 78;
-    --accent-foreground: 0.1 0.015 260;
+    --accent: 0.72 0.11 82;
+    --accent-foreground: 0.08 0 0;
 
     --destructive: 0.53 0.19 27;
-    --destructive-foreground: 0.95 0.012 88;
+    --destructive-foreground: 0.94 0.018 88;
 
-    --border: 0.25 0.04 260;
-    --input: 0.19 0.03 260;
-    --ring: 0.74 0.13 78;
+    --border: 0.22 0.03 82;
+    --input: 0.16 0 0;
+    --ring: 0.72 0.11 82;
 
     --radius: 0.25rem;
 
-    --chart-1: 0.74 0.13 78;
-    --chart-2: 0.58 0.14 78;
-    --chart-3: 0.44 0.09 78;
-    --chart-4: 0.84 0.07 78;
-    --chart-5: 0.66 0.15 78;
+    --chart-1: 0.72 0.11 82;
+    --chart-2: 0.55 0.12 82;
+    --chart-3: 0.4 0.08 82;
+    --chart-4: 0.82 0.06 82;
+    --chart-5: 0.65 0.14 82;
 
-    --sidebar: 0.11 0.022 260;
-    --sidebar-foreground: 0.95 0.012 88;
-    --sidebar-primary: 0.74 0.13 78;
-    --sidebar-primary-foreground: 0.1 0.015 260;
-    --sidebar-accent: 0.19 0.03 260;
-    --sidebar-accent-foreground: 0.95 0.012 88;
-    --sidebar-border: 0.25 0.04 260;
-    --sidebar-ring: 0.74 0.13 78;
+    --sidebar: 0.1 0 0;
+    --sidebar-foreground: 0.94 0.018 88;
+    --sidebar-primary: 0.72 0.11 82;
+    --sidebar-primary-foreground: 0.08 0 0;
+    --sidebar-accent: 0.16 0 0;
+    --sidebar-accent-foreground: 0.94 0.018 88;
+    --sidebar-border: 0.22 0.03 82;
+    --sidebar-ring: 0.72 0.11 82;
   }
 
   * {
@@ -111,9 +111,9 @@
   }
 
   .glass-nav {
-    background: oklch(0.11 0.022 260 / 0.88);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: oklch(0.08 0 0 / 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid oklch(var(--primary) / 0.2);
   }
 
@@ -127,12 +127,12 @@
   .luxury-card:hover {
     border-color: oklch(var(--primary));
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px oklch(var(--primary) / 0.18);
+    box-shadow: 0 12px 40px oklch(var(--primary) / 0.15);
   }
 
   .btn-gold {
     background: oklch(var(--primary));
-    color: oklch(0.1 0.015 260);
+    color: oklch(0.08 0 0);
     font-family: "DM Sans", sans-serif;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -141,8 +141,8 @@
   }
 
   .btn-gold:hover {
-    background: oklch(0.8 0.15 78);
-    box-shadow: 0 0 24px oklch(var(--primary) / 0.45);
+    background: oklch(0.78 0.13 82);
+    box-shadow: 0 0 20px oklch(var(--primary) / 0.4);
   }
 
   .btn-gold-outline {
@@ -157,8 +157,8 @@
   }
 
   .btn-gold-outline:hover {
-    background: oklch(var(--primary) / 0.12);
-    box-shadow: 0 0 16px oklch(var(--primary) / 0.28);
+    background: oklch(var(--primary) / 0.1);
+    box-shadow: 0 0 16px oklch(var(--primary) / 0.25);
   }
 }
 

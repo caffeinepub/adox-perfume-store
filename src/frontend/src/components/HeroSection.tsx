@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
 import { useSiteContent } from "../hooks/useQueries";
 
 const DEFAULT_HERO_IMAGE = "/assets/generated/hero-perfume.dim_1200x700.jpg";
@@ -15,21 +14,7 @@ export default function HeroSection() {
   );
   const { data: heroImage } = useSiteContent("heroImage", "");
 
-  // Preload hero image to eliminate flash of wrong/placeholder image
   const backgroundImage = heroImage || DEFAULT_HERO_IMAGE;
-  const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
-  const loadingRef = useRef("");
-
-  useEffect(() => {
-    if (loadingRef.current === backgroundImage) return;
-    loadingRef.current = backgroundImage;
-    const img = new Image();
-    img.onload = () => setLoadedSrc(backgroundImage);
-    img.onerror = () => setLoadedSrc(backgroundImage);
-    img.src = backgroundImage;
-  }, [backgroundImage]);
-
-  const displaySrc = loadedSrc ?? null;
 
   const scrollToProducts = () => {
     document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
@@ -40,22 +25,15 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Solid navy fallback -- always visible */}
+      {/* Background Image */}
       <div
-        className="absolute inset-0"
-        style={{ backgroundColor: "oklch(0.11 0.022 260)" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-700"
+        style={{ backgroundImage: `url('${backgroundImage}')` }}
       />
-      {/* Background Image -- fades in once preloaded */}
-      {displaySrc && (
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-fade-in"
-          style={{ backgroundImage: `url('${displaySrc}')` }}
-        />
-      )}
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-background/65" />
+      <div className="absolute inset-0 bg-background/70" />
       {/* Gold gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
