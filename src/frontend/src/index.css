@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Luxury black/gold/white dark theme */
+    --background: 0.08 0 0;
+    --foreground: 0.94 0.018 88;
+    --card: 0.12 0 0;
+    --card-foreground: 0.94 0.018 88;
+    --popover: 0.11 0 0;
+    --popover-foreground: 0.94 0.018 88;
+
+    /* Gold primary */
+    --primary: 0.72 0.11 82;
+    --primary-foreground: 0.08 0 0;
+
+    --secondary: 0.16 0 0;
+    --secondary-foreground: 0.94 0.018 88;
+
+    --muted: 0.18 0 0;
+    --muted-foreground: 0.58 0.01 88;
+
+    --accent: 0.72 0.11 82;
+    --accent-foreground: 0.08 0 0;
+
+    --destructive: 0.53 0.19 27;
+    --destructive-foreground: 0.94 0.018 88;
+
+    --border: 0.22 0.03 82;
+    --input: 0.16 0 0;
+    --ring: 0.72 0.11 82;
+
+    --radius: 0.25rem;
+
+    --chart-1: 0.72 0.11 82;
+    --chart-2: 0.55 0.12 82;
+    --chart-3: 0.4 0.08 82;
+    --chart-4: 0.82 0.06 82;
+    --chart-5: 0.65 0.14 82;
+
+    --sidebar: 0.1 0 0;
+    --sidebar-foreground: 0.94 0.018 88;
+    --sidebar-primary: 0.72 0.11 82;
+    --sidebar-primary-foreground: 0.08 0 0;
+    --sidebar-accent: 0.16 0 0;
+    --sidebar-accent-foreground: 0.94 0.018 88;
+    --sidebar-border: 0.22 0.03 82;
+    --sidebar-ring: 0.72 0.11 82;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "DM Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Playfair Display", serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Playfair Display", serif;
+  }
+
+  .font-body {
+    font-family: "DM Sans", sans-serif;
+  }
+
+  .text-gold {
+    color: oklch(var(--primary));
+  }
+
+  .bg-gold {
+    background-color: oklch(var(--primary));
+  }
+
+  .border-gold {
+    border-color: oklch(var(--primary));
+  }
+
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      oklch(var(--primary)),
+      transparent
+    );
+    width: 100%;
+  }
+
+  .glass-nav {
+    background: oklch(0.08 0 0 / 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid oklch(var(--primary) / 0.2);
+  }
+
+  .luxury-card {
+    background: oklch(var(--card));
+    border: 1px solid oklch(var(--border));
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s
+      ease;
+  }
+
+  .luxury-card:hover {
+    border-color: oklch(var(--primary));
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px oklch(var(--primary) / 0.15);
+  }
+
+  .btn-gold {
+    background: oklch(var(--primary));
+    color: oklch(0.08 0 0);
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gold:hover {
+    background: oklch(0.78 0.13 82);
+    box-shadow: 0 0 20px oklch(var(--primary) / 0.4);
+  }
+
+  .btn-gold-outline {
+    background: transparent;
+    color: oklch(var(--primary));
+    border: 1px solid oklch(var(--primary));
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gold-outline:hover {
+    background: oklch(var(--primary) / 0.1);
+    box-shadow: 0 0 16px oklch(var(--primary) / 0.25);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.52 0.2 145 / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px oklch(0.52 0.2 145 / 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+.animation-delay-800 {
+  animation-delay: 0.8s;
+}
