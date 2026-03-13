@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Social */}
           <div className="flex items-center gap-6">
             <a
-              href="https://www.facebook.com/oplitun"
+              href="https://www.facebook.com/share/18CWDtMFHZ/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground/50 hover:text-primary transition-colors"

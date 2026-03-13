@@ -70,7 +70,7 @@ export default function Navbar() {
         {/* Social Icons */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="https://www.facebook.com/oplitun"
+            href="https://www.facebook.com/share/18CWDtMFHZ/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground/60 hover:text-gold transition-colors"
@@ -140,7 +140,7 @@ export default function Navbar() {
             ))}
             <div className="flex items-center gap-4 pt-2">
               <a
-                href="https://www.facebook.com/oplitun"
+                href="https://www.facebook.com/share/18CWDtMFHZ/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground/60 hover:text-gold transition-colors"
